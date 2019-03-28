@@ -12,10 +12,12 @@
 bin/
 gen/
 out/
-
 # Gradle files
 .gradle/
 build/
+androidTest
+test
+
 
 # Local configuration file (sdk path, etc)
 local.properties

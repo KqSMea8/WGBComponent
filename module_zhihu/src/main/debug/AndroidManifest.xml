@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/public_AppTheme">
         <activity
-            android:name=".mvp.ui.activity.ZhihuHomeActivity"
+            android:name="com.wanggebao.wgb.zhihu.mvp.ui.activity.ZhihuHomeActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mvp.ui.activity.DetailActivity"
+            android:name="com.wanggebao.wgb.zhihu.mvp.ui.activity.DetailActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"/>
 
@@ -49,10 +49,10 @@
         信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
         声明 CommonSDK 的 ConfigModule -->
         <meta-data
-            android:name="me.jessyan.armscomponent.commonsdk.core.GlobalConfiguration"
+            android:name="com.wanggebao.wgb.commonsdk.core.GlobalConfiguration"
             android:value="ConfigModule"/>
         <meta-data
-            android:name="me.jessyan.armscomponent.zhihu.app.GlobalConfiguration"
+            android:name="com.wanggebao.wgb.zhihu.app.GlobalConfiguration"
             android:value="ConfigModule"/>
     </application>
 

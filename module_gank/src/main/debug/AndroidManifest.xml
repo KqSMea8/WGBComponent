@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/public_AppTheme">
         <activity
-            android:name=".mvp.ui.activity.GankHomeActivity"
+            android:name="com.wanggebao.wgb.gank.mvp.ui.activity.GankHomeActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -45,10 +45,10 @@
         信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
         声明 CommonSDK 的 ConfigModule -->
         <meta-data
-            android:name="me.jessyan.armscomponent.commonsdk.core.GlobalConfiguration"
+            android:name="com.wanggebao.wgb.commonsdk.core.GlobalConfiguration"
             android:value="ConfigModule"/>
         <meta-data
-            android:name="me.jessyan.armscomponent.gank.app.GlobalConfiguration"
+            android:name="com.wanggebao.wgb.gank.app.GlobalConfiguration"
             android:value="ConfigModule"/>
 
     </application>
