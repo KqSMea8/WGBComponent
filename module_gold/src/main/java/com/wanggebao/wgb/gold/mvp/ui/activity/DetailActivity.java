@@ -31,9 +31,9 @@ import com.jess.arms.di.component.AppComponent;
 import butterknife.BindView;
 import com.wanggebao.wgb.commonres.dialog.ProgresDialog;
 import com.wanggebao.wgb.commonsdk.core.RouterHub;
-import me.jessyan.armscomponent.gold.R2;
 
 import com.wanggebao.wgb.gold.R;
+import com.wanggebao.wgb.gold.R2;
 import com.wanggebao.wgb.gold.app.GoldConstants;
 
 /**

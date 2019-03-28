@@ -24,8 +24,8 @@ import com.jess.arms.integration.cache.IntelligentCache;
 import com.jess.arms.utils.ArmsUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.wanggebao.wgb.zhihu.BuildConfig;
 
-import me.jessyan.armscomponent.zhihu.BuildConfig;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
 import static com.wanggebao.wgb.zhihu.mvp.model.api.Api.ZHIHU_DOMAIN;

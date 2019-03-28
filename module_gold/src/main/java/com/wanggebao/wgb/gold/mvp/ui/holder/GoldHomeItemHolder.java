@@ -28,9 +28,9 @@ import com.jess.arms.utils.ArmsUtils;
 import butterknife.BindView;
 import io.reactivex.Observable;
 import com.wanggebao.wgb.commonsdk.imgaEngine.config.CommonImageConfigImpl;
-import me.jessyan.armscomponent.gold.R2;
 
 import com.wanggebao.wgb.gold.R;
+import com.wanggebao.wgb.gold.R2;
 import com.wanggebao.wgb.gold.mvp.model.entity.GoldListBean;
 
 /**

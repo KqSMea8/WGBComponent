@@ -27,7 +27,7 @@ import com.jess.arms.utils.ArmsUtils;
 import butterknife.BindView;
 import io.reactivex.Observable;
 import com.wanggebao.wgb.commonsdk.imgaEngine.config.CommonImageConfigImpl;
-import me.jessyan.armscomponent.zhihu.R2;
+import com.wanggebao.wgb.zhihu.R2;
 import com.wanggebao.wgb.zhihu.mvp.model.entity.DailyListBean;
 
 /**

@@ -34,9 +34,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import com.wanggebao.wgb.commonsdk.core.RouterHub;
-import me.jessyan.armscomponent.gank.R2;
 
 import com.wanggebao.wgb.gank.R;
+import com.wanggebao.wgb.gank.R2;
 import com.wanggebao.wgb.gank.di.component.DaggerGankHomeComponent;
 import com.wanggebao.wgb.gank.mvp.contract.GankHomeContract;
 import com.wanggebao.wgb.gank.mvp.presenter.GankHomePresenter;

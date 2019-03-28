@@ -24,8 +24,8 @@ import com.jess.arms.integration.cache.IntelligentCache;
 import com.jess.arms.utils.ArmsUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.wanggebao.wgb.gank.BuildConfig;
 
-import me.jessyan.armscomponent.gank.BuildConfig;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
 import static com.wanggebao.wgb.gank.mvp.model.api.Api.GANK_DOMAIN;

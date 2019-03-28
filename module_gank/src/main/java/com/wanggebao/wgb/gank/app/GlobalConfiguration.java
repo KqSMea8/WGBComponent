@@ -26,10 +26,9 @@ import com.jess.arms.integration.ConfigModule;
 import com.jess.arms.integration.cache.IntelligentCache;
 import com.jess.arms.utils.ArmsUtils;
 import com.squareup.leakcanary.RefWatcher;
+import com.wanggebao.wgb.gank.BuildConfig;
 
 import java.util.List;
-
-import me.jessyan.armscomponent.gank.BuildConfig;
 
 /**
  * ================================================

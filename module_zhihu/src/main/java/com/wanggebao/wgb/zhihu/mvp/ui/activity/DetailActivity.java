@@ -34,9 +34,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import com.wanggebao.wgb.commonsdk.core.RouterHub;
-import me.jessyan.armscomponent.zhihu.R2;
 
 import com.wanggebao.wgb.zhihu.R;
+import com.wanggebao.wgb.zhihu.R2;
 import com.wanggebao.wgb.zhihu.app.ZhihuConstants;
 import com.wanggebao.wgb.commonsdk.utils.HtmlUtil;
 import com.wanggebao.wgb.zhihu.di.component.DaggerDetailComponent;

@@ -30,7 +30,8 @@ import com.jess.arms.integration.ConfigModule;
 import java.util.List;
 
 import butterknife.ButterKnife;
-import me.jessyan.armscomponent.commonsdk.BuildConfig;
+
+import com.wanggebao.wgb.commonsdk.BuildConfig;
 import com.wanggebao.wgb.commonsdk.http.Api;
 import com.wanggebao.wgb.commonsdk.http.SSLSocketClient;
 import com.wanggebao.wgb.commonsdk.imgaEngine.Strategy.CommonGlideImageLoaderStrategy;

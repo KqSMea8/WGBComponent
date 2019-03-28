@@ -23,8 +23,7 @@ import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.utils.ArmsUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
-
-import me.jessyan.armscomponent.app.BuildConfig;
+import com.wanggebao.wgb.BuildConfig;
 
 /**
  * ================================================

@@ -34,9 +34,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import com.wanggebao.wgb.commonsdk.core.RouterHub;
-import me.jessyan.armscomponent.gold.R2;
 
 import com.wanggebao.wgb.gold.R;
+import com.wanggebao.wgb.gold.R2;
 import com.wanggebao.wgb.gold.di.component.DaggerGoldHomeComponent;
 import com.wanggebao.wgb.gold.mvp.contract.GoldHomeContract;
 import com.wanggebao.wgb.gold.mvp.presenter.GoldHomePresenter;

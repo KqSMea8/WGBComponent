@@ -26,9 +26,9 @@ import com.jess.arms.utils.ArmsUtils;
 
 import butterknife.BindView;
 import com.wanggebao.wgb.commonsdk.imgaEngine.config.CommonImageConfigImpl;
-import me.jessyan.armscomponent.gank.R2;
 
 import com.wanggebao.wgb.gank.R;
+import com.wanggebao.wgb.gank.R2;
 import com.wanggebao.wgb.gank.mvp.model.entity.GankItemBean;
 
 /**
