@@ -15,9 +15,16 @@
  */
 package com.wanggebao.wgb.mvp.ui.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
+import android.telecom.Connection;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,14 +35,23 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.wanggebao.wgb.R;
-
-import butterknife.BindView;
-import butterknife.OnClick;
+import com.wanggebao.wgb.commonres.tab.FragmentPagerItemAdapter;
+import com.wanggebao.wgb.commonres.tab.TabLayout;
 import com.wanggebao.wgb.commonsdk.core.RouterHub;
+import com.wanggebao.wgb.commonsdk.location.LocationService;
+import com.wanggebao.wgb.commonsdk.location.LocationStatusManager;
 import com.wanggebao.wgb.commonsdk.utils.Utils;
 import com.wanggebao.wgb.commonservice.gank.service.GankInfoService;
 import com.wanggebao.wgb.commonservice.gold.service.GoldInfoService;
 import com.wanggebao.wgb.commonservice.zhihu.service.ZhihuInfoService;
+import com.wanggebao.wgb.mvp.ui.fragment.ContactFragment;
+import com.wanggebao.wgb.mvp.ui.fragment.HomeFragment;
+import com.wanggebao.wgb.mvp.ui.fragment.MessageFragment;
+import com.wanggebao.wgb.mvp.ui.fragment.MineFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * ================================================
@@ -63,11 +79,20 @@ public class MainActivity extends BaseActivity {
     @Autowired(name = RouterHub.GOLD_SERVICE_GOLDINFOSERVICE)
     GoldInfoService mGoldInfoService;
 
+    @BindView(R.id.vp_main)
+    ViewPager vpMain;
+    @BindView(R.id.tab_main)
+    TabLayout tabMain;
+
     private long mPressedTime;
+
+    public static final String RECEIVER_ACTION = "location_in_background";
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(RECEIVER_ACTION);
+        registerReceiver(locationChangeBroadcastReceiver, intentFilter);
     }
 
     @Override
@@ -78,10 +103,18 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
+        vpMain.setAdapter(new FragmentPagerItemAdapter.Builder(this)
+                .add(R.drawable.home,"主页", HomeFragment.class)
+                .add(R.drawable.message,"消息", MessageFragment.class)
+                .add(R.drawable.contact,"通讯录", ContactFragment.class)
+                .add(R.drawable.mine,"我的", MineFragment.class)
+                .build());
+        tabMain.setViewPager(vpMain);
         //这里想展示组件向外提供服务的功能, 模拟下组件向宿主提供一些必要的信息, 这里为了简单就直接返回本地数据不请求网络了
         loadZhihuInfo();
         loadGankInfo();
         loadGoldInfo();
+        startLocationService();
     }
 
     private void loadZhihuInfo() {
@@ -126,7 +159,7 @@ public class MainActivity extends BaseActivity {
     }
 
     /**
-     * 这里注意下在组件的页面中(使用了 R2 的页面)使用 {@link butterknife.OnClick} 会有概率出现 id 不正确的问题, 使用以下方式解决
+     * 这里注意下在组件的页面中(使用了 R2 的页面)使用 {@link OnClick} 会有概率出现 id 不正确的问题, 使用以下方式解决
      * <pre>
      * @OnClick({R2.id.button1, R2.id.button2})
      * public void Onclick(View view){
@@ -156,4 +189,43 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        if (locationChangeBroadcastReceiver != null)
+            unregisterReceiver(locationChangeBroadcastReceiver);
+        super.onDestroy();
+    }
+
+    /**
+     * 开始定位服务
+     */
+    private void startLocationService(){
+        getApplicationContext().startService(new Intent(this, LocationService.class));
+        LocationStatusManager.getInstance().resetToInit(getApplicationContext());
+    }
+
+    /**
+     * 关闭服务
+     * 先关闭守护进程，再关闭定位服务
+     */
+    private void stopLocationService(){
+        sendBroadcast(com.wanggebao.wgb.commonsdk.location.Utils.getCloseBrodecastIntent());
+        LocationStatusManager.getInstance().resetToInit(getApplicationContext());
+    }
+
+    private BroadcastReceiver locationChangeBroadcastReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(RECEIVER_ACTION)) {
+                String locationResult = intent.getStringExtra("result");
+                if (null != locationResult && !locationResult.trim().equals("")) {
+                    Log.e(TAG,locationResult);
+                }
+            }
+        }
+    };
+
 }

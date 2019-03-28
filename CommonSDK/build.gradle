@@ -32,13 +32,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api 'me.jessyan:arms:2.5.0'
     api 'me.jessyan:arms-imageloader-glide:2.5.0'
-
+    //定位功能
+    api 'com.amap.api:location:4.4.0'
+    //api "androidx.appcompat:appcompat:1.1.0-alpha01"
     //tools
     api rootProject.ext.dependencies["androideventbus"]
     api(rootProject.ext.dependencies["arouter"]) {
